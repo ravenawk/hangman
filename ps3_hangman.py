@@ -82,7 +82,9 @@ def getAvailableLetters(lettersGuessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    lettersGuessed = lettersGuessed.ascii_lowercase
+
+    import string
+    alpha = string.ascii_lowercase
     for l in lettersGuessed:
         alpha = alpha.replace(l,"")
     return alpha   
@@ -125,15 +127,11 @@ def hangman(secretWord):
                 print("Congratulations, you won!")
                 break
         else:
-            print("Oops! That letter is not in my word: ", getGuessedWord)
-            guessnum += 8
+            print("Oops! That letter is not in my word: ", getGuessedWord(secretWord, lettersGuessed))
+            guessnum += 1
             if guessnum >= 8:
                 print("Sorry, you ran out of guesses. The word was ", secretWord)
                 break 
-                
-        
-
-
 
 
 # When you've completed your hangman function, uncomment these two lines
