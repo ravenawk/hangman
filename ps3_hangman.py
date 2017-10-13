@@ -111,8 +111,10 @@ def hangman(secretWord):
     '''
     lettersGuessed = []
     print("Welcome to the game, Hangman!")
-    guessnum = 0
+    print("I am thinking of a word that is ", len(secretWord), "letters long.")
+    guessnum = 8
     while True:
+        print("You have", guessnum, "guesses left." )
         print("Available letters: ",getAvailableLetters(lettersGuessed))
         guess = input("Please guess a letter: ").lower()
         if guess in lettersGuessed:
@@ -128,8 +130,8 @@ def hangman(secretWord):
                 break
         else:
             print("Oops! That letter is not in my word: ", getGuessedWord(secretWord, lettersGuessed))
-            guessnum += 1
-            if guessnum >= 8:
+            guessnum -= 1
+            if guessnum <= 0:
                 print("Sorry, you ran out of guesses. The word was ", secretWord)
                 break 
 
